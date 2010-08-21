@@ -12,4 +12,6 @@
 }
 @property(nonatomic, retain) UIColor* strokeColor;
 @property(nonatomic, retain) NSMutableArray* strokes;
+
+-(NSString*) gmlRepresentation;
 @end
