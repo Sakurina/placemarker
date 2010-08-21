@@ -1,0 +1,12 @@
+def configure(conf):
+  conf.env.IC_DYLIB_LDFLAGS = conf.env.SUBSTRATE_LDFLAGS + ' -framework UIKit -framework CoreGraphics'
+  pass
+
+def build(bld):
+  print(' → building PlaceMarker.dylib')  
+  bld.use_the_magic()
+  bld(source='PMViewController.m PMTweak.mm')
+  bld(source='PMViewController.o PMTweak.o',
+      target='PlaceMarker.dylib',
+      rule='${CPP_COMPILER} ${IC_DYLIB_LDFLAGS} -o ${TGT} ${SRC}')
+  bld.install_files('${PREFIX}/Library/MobileSubstrate/DynamicLibraries', 'PlaceMarker.dylib')

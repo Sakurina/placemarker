@@ -1,0 +1,9 @@
+Package: net.r-ch.placemarker
+Name: PlaceMarker
+Version: 0.1
+Architecture: iphoneos-arm
+Description: scribble graffiti on real places' virtual walls
+Maintainer: Yanik Magnan <kirbykirbykirby@gmail.com>
+Author: Yanik Magnan <kirbykirbykirby@gmail.com>
+Section: Tweaks
+Pre-Depends: mobilesubstrate, firmware (>= 3.0)
