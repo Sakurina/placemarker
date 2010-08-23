@@ -1,5 +1,6 @@
 #import "PMViewController.h"
-
+#import "PMDrawingViewController.h"
+#import "PMStubService.h"
 @implementation PMViewController
 
 -(id) init {
@@ -36,6 +37,14 @@
 }
 
 -(void) tagButtonTapped {
-  NSLog(@"Tag button tapped!");
+  PMDrawingViewController* dVC = [[PMDrawingViewController new] autorelease];
+  dVC.delegate = self;
+  [self presentModalViewController:dVC animated:YES];
 }
+
+-(void) drawingViewController:(PMDrawingViewController*)dvc didScribbleTag:(NSString*)gml {
+  [[PMStubService sharedInstance] uploadTag:gml forVenueID:@"FFFFAT"];
+  [self dismissModalViewControllerAnimated:YES];
+}
+
 @end

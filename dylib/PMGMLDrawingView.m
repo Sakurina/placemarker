@@ -7,8 +7,8 @@
 
 -(id) init {
   if (self = [super init]) {
-    self.backgroundColor = kPMGMLStrokeColorYellow;
-    self.strokeColor = kPMGMLStrokeColorPink;
+    self.backgroundColor = [UIColor clearColor];
+    self.strokeColor = kPMGMLStrokeColorBlack;
     self.strokes = [NSMutableArray array];
     self.userInteractionEnabled = YES;
   }
@@ -16,8 +16,8 @@
 }
 -(id) initWithFrame:(CGRect)r {
   if (self = [super initWithFrame:r]) {
-    self.backgroundColor = kPMGMLStrokeColorYellow;
-    self.strokeColor = kPMGMLStrokeColorPink;
+    self.backgroundColor = [UIColor clearColor];
+    self.strokeColor = kPMGMLStrokeColorBlack;
     self.strokes = [NSMutableArray array];
     self.userInteractionEnabled = YES;
   }
