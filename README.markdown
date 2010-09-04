@@ -2,17 +2,14 @@
 PlaceMarker is like [WebMarker][1], except for virtual representations of real places (Foursquare venues). It injects itself into the [Foursquare iPhone app][2] using [MobileSubstrate][3], a code injection framework for jailbroken iOS devices.
 
 ## Current Progress
-A little further along than Friday.
+* PlaceMarker is currently unable of telling which venue a user is at... you'd think what I have in Research Notes would work but seemingly not! This means a fake check-in is required for anything in the tab to work; see line 55 of *PMViewController.m* for details.
+* While PlaceMarker will throw a dialog at you if not checked in, no buttons are disabled yet, so while it won't keep you from bringing up the capture screen, expect crashes if you do.
+* Once checked-in, the tag button pops up the capture view controller. You can then draw your tag. It can have multiple strokes of different color.
+* Clicking the *upload to 000000book* button will *NOT* upload it to 000000book, but rather save the tag locally. A plist is created for each foursquare venue in the app's documents folder, containing an array of GML tags. (This path varies on each device, but should be /var/mobile/Applications/*/foursquare.app/../Documents.)
+* Tag reading/display is currently not possible.
 
-Everything in the PlaceMarker tab (except the About button) requires you to be checked into a venue. A pop up will show up to tell you to check in if you are not, but from that point on, whether you are checked in or not will not be verified, so venturing any further may result in crashes.
-
-For development purposes, you can fake a checkin with one line of cycript (see line 55 of PMViewController.m for details). This will make PlaceMarker think you are checked in without actually checking in through Foursquare. (In fact, I haven't tested with an actual checkin yet; I should be able to do that tomorrow afternoon.)
-
-You can tag stuff. The tag button takes you to a GML drawing screen where you can draw your tag. Touching the bottom 160px of the screen will save the tag for that venue. Currently, storage is done locally, but the *PMStubService* could get swapped out for one using 000000book or whatever backend later.
-
-PMStubService currently stores a plist containing each venue's tags inside of Foursquare's document folder. (This path varies on each device, but should be /var/mobile/Applications/*/foursquare.app/../Documents.)
-
-Tag reading/display is currently not possible.
+## Reusable Stuff You Might Be Interested In
+* *PMGMLDrawingView* and *PMGMLStroke* are fully SDK-legal classes you can drop into any app to automatically be able to capture GML tags. They do not have any extra dependencies.
 
 ## Research Notes
 * **How to find which venue the user is currently at:** The *FriendsViewController* has a *currentPlace* property. Oddly enough, if the user is not currently checked in anywhere, it returns a *Place* object with empty fields instead of nil. **DOESN'T WORK**
