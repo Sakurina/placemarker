@@ -5,8 +5,8 @@ def configure(conf):
 def build(bld):
   print(' → building PlaceMarker.dylib')  
   bld.use_the_magic()
-  bld(source='PMViewController.m PMTweak.mm PMGMLDrawingView.m PMGMLStroke.m PMDrawingViewController.m PMStubService.m')
-  bld(source='PMViewController.o PMTweak.o PMGMLDrawingView.o PMGMLStroke.o PMDrawingViewController.o PMStubService.o',
+  bld(source='PMViewController.m PMTweak.mm PMGMLDrawingView.m PMGMLStroke.m PMCaptureViewController.m PMStubService.m')
+  bld(source='PMViewController.o PMTweak.o PMGMLDrawingView.o PMGMLStroke.o PMCaptureViewController.o PMStubService.o',
       target='PlaceMarker.dylib',
       rule='${CPP_COMPILER} ${IC_DYLIB_LDFLAGS} -o ${TGT} ${SRC}')
   bld.install_files('${PREFIX}/Library/MobileSubstrate/DynamicLibraries', 'PlaceMarker.dylib')

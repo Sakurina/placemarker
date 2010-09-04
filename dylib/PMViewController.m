@@ -1,5 +1,5 @@
 #import "PMViewController.h"
-#import "PMDrawingViewController.h"
+#import "PMCaptureViewController.h"
 #import "PMStubService.h"
 #import "PMFoursquareProxy.h"
 
@@ -80,13 +80,17 @@
 }
 
 -(void) tagButtonTapped {
-  PMDrawingViewController* dVC = [[PMDrawingViewController new] autorelease];
+  PMCaptureViewController* dVC = [[PMCaptureViewController new] autorelease];
   dVC.delegate = self;
   [self presentModalViewController:dVC animated:YES];
 }
 
--(void) drawingViewController:(PMDrawingViewController*)dvc didScribbleTag:(NSString*)gml {
+-(void) captureViewController:(PMCaptureViewController*)dvc didCaptureTag:(NSString*)gml {
   [[PMStubService sharedInstance] uploadTag:gml forVenueID:[[PMFoursquareProxy sharedInstance] currentVenueID]];
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void) captureViewControllerDidCancelCapture:(PMCaptureViewController*)dvc {
   [self dismissModalViewControllerAnimated:YES];
 }
 
