@@ -6,7 +6,7 @@ A little further along than Friday.
 
 Everything in the PlaceMarker tab (except the About button) requires you to be checked into a venue. A pop up will show up to tell you to check in if you are not, but from that point on, whether you are checked in or not will not be verified, so venturing any further may result in crashes.
 
-For development purposes, you can fake a checkin with one line of cycript (see line 55 of PMViewController.m for details). This will make PlaceMarker think you are checked in without actually checking in through Foursquare.
+For development purposes, you can fake a checkin with one line of cycript (see line 55 of PMViewController.m for details). This will make PlaceMarker think you are checked in without actually checking in through Foursquare. (In fact, I haven't tested with an actual checkin yet; I should be able to do that tomorrow afternoon.)
 
 You can tag stuff. The tag button takes you to a GML drawing screen where you can draw your tag. Touching the bottom 160px of the screen will save the tag for that venue. Currently, storage is done locally, but the *PMStubService* could get swapped out for one using 000000book or whatever backend later.
 
@@ -15,7 +15,7 @@ PMStubService currently stores a plist containing each venue's tags inside of Fo
 Tag reading/display is currently not possible.
 
 ## Research Notes
-* **How to find which venue the user is currently at:** The *FriendsViewController* has a *currentPlace* property. Oddly enough, if the user is not currently checked in anywhere, it returns a *Place* object with empty fields instead of nil.
+* **How to find which venue the user is currently at:** The *FriendsViewController* has a *currentPlace* property. Oddly enough, if the user is not currently checked in anywhere, it returns a *Place* object with empty fields instead of nil. **DOESN'T WORK**
 
 ## License
 Copyright (c) 2010, Yanik Magnan <kirbykirbykirby@gmail.com>
